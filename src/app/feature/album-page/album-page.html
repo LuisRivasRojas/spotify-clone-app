@@ -1,0 +1,32 @@
+<div class="flex flex-col gap-2">
+  <h1 class="text-2xl font-medium pb-4 mb-4 border-b border-gray-300">Albums</h1>
+
+  <div class="grid grid-cols-2 lg:grid-cols-4 gap-6">
+    @for (album of albums(); track album) {
+      <div class="max-w-sm bg-white border border-gray-200 rounded-lg hover:shadow-md">
+        <a [href]="album.external_urls.spotify" target="_blank">
+          @let image = album.images[0];
+          <img class="rounded-t-lg"
+               [height]="image.height"
+               [width]="image.width"
+               [src]="image.url"
+               alt="Album image"/>
+        </a>
+        <div class="p-5">
+          <a [href]="album.external_urls.spotify" target="_blank">
+            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 hover:text-green-700">{{ album.name }}</h5>
+          </a>
+          <div class="mb-3 font-normal text-gray-700">
+            <div class="font-medium mb-2">{{ album.artists.length > 1 ? 'Artistas' : 'Artista' }}:</div>
+            <ul class="max-w-md space-y-1 text-gray-500 list-disc list-inside">
+              @for (artist of album.artists; track artist) {
+                <li>{{ artist.name }}</li>
+              }
+            </ul>
+          </div>
+        </div>
+      </div>
+
+    }
+  </div>
+</div>
