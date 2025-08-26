@@ -14,6 +14,23 @@ export const routes: Routes = [
       {
         path: 'albums',
         loadComponent: () => import('./feature/album-page/album-page').then(c => c.AlbumPage)
+      },
+      {
+        path: 'search',
+        loadComponent: () => import('./feature/search-page/search-page').then(c => c.SearchPage)
+      },
+      {
+        path: 'profile',
+        loadComponent: () => import('./feature/profile-page/profile-page').then(c => c.ProfilePage)
+      },
+      {
+        path: 'playlists',
+        loadComponent: () => import('./feature/playlists-page/playlists-page').then(c => c.PlaylistsPage)
+      },
+      {
+        path: '',
+        redirectTo: 'albums',
+        pathMatch: 'full'
       }
     ]
   }
